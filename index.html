@@ -1,0 +1,45 @@
+<!-- A scope object is created for every controller you create -->
+<html ng-app="todoApp">
+<head>
+    <script src="angular.js"></script>
+    <script src="app.js"></script>
+    <title>Todo App</title>
+</head>
+
+<body>
+    <h1>Todo App</h1>
+
+    <div ng-controller="todoCtrl as ctrl">
+
+        <div>
+            <p>Add a Todo: </p>
+            <input type="text" ng-model="ctrl.newTodo">
+            <br><br>
+            <button ng-click="ctrl.addNewTodo()">Add</button>         
+        </div>
+
+        
+
+        <div>
+            <p>Your Todos:</p>
+            <button ng-hide="ctrl.editMode" ng-click="ctrl.editTodo()">Edit</button>
+            <button ng-show="ctrl.editMode" ng-click="ctrl.editTodo()">Done</button> 
+            <ol>
+                <li ng-repeat="todo in ctrl.todos track by $index"/>
+                    <span ng-hide="ctrl.editMode" ng-bind="todo"></span>
+                    <input ng-show="ctrl.editMode" ng-model="todo"  type="text"></input>
+                    <button ng-hide="ctrl.editMode" ng-click="ctrl.deleteTodo($index)">Delete</button>
+                </li>
+            </ol>
+
+        </div>
+
+
+
+    </div>
+
+
+<body>
+
+
+</html>
